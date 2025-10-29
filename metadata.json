@@ -1,0 +1,7 @@
+{
+  "name": "Personal Library Tracker",
+  "description": "A web application to track your personal book library. Features a batch camera scanner to add multiple books via ISBN and options to export your collection.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
