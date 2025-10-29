@@ -60,5 +60,21 @@
       </div>
     </div>
     <script type="module" src="/index.tsx"></script>
+
+    <!-- Static Add Button -->
+    <button
+      id="static-add-button"
+      class="fixed bottom-6 right-6 bg-secondary text-background h-16 w-16 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform"
+      aria-label="Add new books"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+    </button>
+    <script>
+      document.getElementById('static-add-button').addEventListener('click', () => {
+        window.dispatchEvent(new CustomEvent('showScannerView'));
+      });
+    </script>
   </body>
 </html>

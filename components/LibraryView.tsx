@@ -1,11 +1,9 @@
-
 import React from 'react';
 import { Book } from '../types';
-import { PlusIcon, BookOpenIcon, ExportIcon } from './icons';
+import { BookOpenIcon, ExportIcon } from './icons';
 
 interface LibraryViewProps {
   books: Book[];
-  onAddClick: () => void;
   onExportClick: () => void;
 }
 
@@ -23,7 +21,7 @@ const BookCover: React.FC<{ book: Book }> = ({ book }) => (
   </div>
 );
 
-export const LibraryView: React.FC<LibraryViewProps> = ({ books, onAddClick, onExportClick }) => {
+export const LibraryView: React.FC<LibraryViewProps> = ({ books, onExportClick }) => {
   return (
     <div className="min-h-screen bg-background p-4 sm:p-6 lg:p-8">
       <header className="flex justify-between items-center mb-6">
@@ -49,14 +47,6 @@ export const LibraryView: React.FC<LibraryViewProps> = ({ books, onAddClick, onE
           ))}
         </div>
       )}
-
-      <button
-        onClick={onAddClick}
-        className="fixed bottom-6 right-6 bg-secondary text-background h-16 w-16 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform"
-        aria-label="Add new books"
-      >
-        <PlusIcon />
-      </button>
     </div>
   );
 };

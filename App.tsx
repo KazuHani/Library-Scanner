@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { Book, View } from './types';
 import { firestoreService } from './services/firestoreService';
@@ -29,6 +28,16 @@ const App: React.FC = () => {
     fetchLibrary();
   }, [fetchLibrary]);
 
+  useEffect(() => {
+    const handleShowScanner = () => {
+      setView('scanner');
+    };
+    window.addEventListener('showScannerView', handleShowScanner);
+    return () => {
+      window.removeEventListener('showScannerView', handleShowScanner);
+    };
+  }, []);
+
   const handleSaveBooks = async (books: Book[]) => {
     await firestoreService.addBooks(books);
     await fetchLibrary();
@@ -49,7 +58,6 @@ const App: React.FC = () => {
       {view === 'library' && (
         <LibraryView 
             books={libraryBooks} 
-            onAddClick={() => setView('scanner')} 
             onExportClick={() => setIsExportModalOpen(true)}
         />
       )}
